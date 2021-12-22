@@ -9,12 +9,12 @@ use Mpdf\QrCode\Output;
 
 
 //INSTANCIA PRINCIPAL DO PAYLOAD PIX
-$obPayload = (new Payload)->setPixKey('32476592854')
-                          ->setDescription('Pagamento do pedido 123456')
+$obPayload = (new Payload)->setPixKey('+5514996547895')
+                          ->setDescription('Pagamento do pedido 12345')
                           ->setMerchantName('Andre Siqueira')
                           ->setMerchantCity('BOTUCATU')
                           ->setAmount(100.00)
-                          ->setTxid('siqPix1234');
+                          ->setTxid('WDEV1234');
 
 //CÓDIGO DE PAGAMENTO PIX
 $PayloadQrCode = $obPayload->getPayload();
@@ -34,3 +34,7 @@ $image = (new Output\Png)->output($obQrCode,400);
 <br><br>
 Código pix:<br>
 <strong><?=$PayloadQrCode?></strong>
+<br>
+
+<!--00020126652614br.gov.bcb.pix0114+55149965478950225Pagamento do pedido 123455204000053039865406100.005802BR5914Andre Siqueira6008BOTUCATU5802BR62120508WDEV12346304EF61-->
+<!--00020126652614br.gov.bcb.pix0114+55149965478950225Pagamento do pedido 123455204000053039865406100.005802BR5914Andre Siqueira6008BOTUCATU5802BR62120508WDEV12346304EF61-->

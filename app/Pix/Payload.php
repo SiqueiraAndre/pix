@@ -13,7 +13,7 @@ class Payload
      */
     const ID_PAYLOAD_FORMAT_INDICATOR = '00';
     const ID_MERCHANT_ACCOUNT_INFORMATION = '26';
-    const ID_MERCHANT_ACCOUNT_INFORMATION_GUI = '00';
+    const ID_MERCHANT_ACCOUNT_INFORMATION_GUI = '26';
     const ID_MERCHANT_ACCOUNT_INFORMATION_KEY = '01';
     const ID_MERCHANT_ACCOUNT_INFORMATION_DESCRIPTION = '02';
     const ID_MERCHANT_CATEGORY_CODE = '52';
@@ -149,7 +149,7 @@ class Payload
     private function getMerchantAccountInformation()
     {
         //DOMINIO DO BANCO
-        $gui = $this->getValue(self::ID_MERCHANT_ACCOUNT_INFORMATION,'br.gov.bcb.pix');
+        $gui = $this->getValue(self::ID_MERCHANT_ACCOUNT_INFORMATION_GUI,'br.gov.bcb.pix');
 
         //CHAVE PIX
         $key = $this->getValue(self::ID_MERCHANT_ACCOUNT_INFORMATION_KEY,$this->pixKey);
@@ -191,6 +191,8 @@ class Payload
                    $this->getValue(self::ID_MERCHANT_CITY,$this->merchantCity).
                    $this->getValue(self::ID_COUNTRY_CODE,'BR').
                    $this->getAdditionalDataFieldTemplate();
+
+        var_dump($this->getMerchantAccountInformation());
 
         //RETORNA O PAYLOAD + CRC16
         return $payload . $this->getCRC16($payload);
